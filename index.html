@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Someone Special ❤️</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#f9a8d4,#f3e8ff);
+}
+
+.step{
+  position:absolute;
+  width:100%;
+  max-width:900px;
+  padding:40px;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(12px);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  text-align:center;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.8s;
+  pointer-events:none;
+}
+.step.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.btn{
+  background:linear-gradient(135deg,#ec4899,#f43f5e);
+  color:white;
+  padding:12px 26px;
+  border-radius:999px;
+  font-weight:600;
+  margin-top:20px;
+  box-shadow:0 6px 20px rgba(236,72,153,.4);
+}
+.emoji{font-size:3rem}
+
+.balloon{
+  position:fixed;
+  bottom:-150px;
+  width:40px;
+  height:55px;
+  background:pink;
+  border-radius:50%;
+  animation:floatUp 14s linear infinite;
+  opacity:.8;
+}
+@keyframes floatUp{
+  to{transform:translateY(-120vh)}
+}
+
+/* IMAGE BOX */
+.image-box{
+  width:100%;
+  max-width:420px;
+  height:420px;
+  margin:auto;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fde2e8;
+}
+
+/* ONLY MEMORY ANIMATION ADDED */
+.image-box img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:1;
+  transform:translateX(0);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+.image-box img.enter{
+  opacity:1;
+  transform:translateX(0);
+}
+.image-box img.exit{
+  opacity:0;
+  transform:translateX(-30px);
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bg-music" src="birthday.mpeg" loop preload="auto"></audio>
+
+<div class="balloon" style="left:10%"></div>
+<div class="balloon" style="left:40%;animation-duration:18s"></div>
+<div class="balloon" style="left:70%;animation-duration:22s"></div>
+
+<div class="flex items-center justify-center h-screen relative z-10">
+
+<div class="step active" id="step0">
+  <div class="emoji">🔐</div>
+  <h2 class="text-4xl font-bold text-pink-600 mb-4">Answer This 💖</h2>
+  <p class="mb-4">Ajke Kar Bithday Sona ? (Ans-Sundorir) 👀</p>
+  <input id="answerInput" class="px-4 py-3 rounded-xl border text-center w-64" placeholder="Your answer">
+  <p id="errorMsg" class="text-red-500 mt-2 hidden">Wrong answer 😢</p>
+  <button class="btn" onclick="checkAnswer()">Unlock ❤️</button>
+</div>
+
+<div class="step" id="step1">
+  <div class="emoji">❤️</div>
+  <h1 class="text-5xl font-bold text-pink-600 mb-6">Hey Beautiful</h1>
+  <p class="text-xl mb-6">I made something special for you…</p>
+  <button class="btn" onclick="startExperience()">Let’s Begin</button>
+</div>
+
+<div class="step" id="step2">
+  <div class="emoji">🎉</div>
+  <h2 class="text-4xl font-bold text-pink-600 mb-6">Happy Birthday!</h2>
+  <p class="text-lg mb-6">Ajke emon akta din jei dine akta cute baccha pagol ei prithibite ase.Sobai koto khusi ar koto anondito hoy.Fel Fel kore sei baccha meyeta sobar dike takiye thake,hase abar majhe majhe kade😊.Bacchata khub gulumulu dekhlei chotkate iccha korbe.Tarpor dhire dhire ei baccha pagolta boro hoy tobe tar bacchamo kome na kintu.Eivavei dekhte dekhte se Amar jibone podarpon kore.18 bochore se pa day tobuo tar moddhe sei chotobelar vab ta royei jay.Ei baccha meyetar kichu kichu jinis amake aro valobaste baddho kore sei meyetake.❤️ </p>
+  <button class="btn" onclick="go(3)">Ekhane Click Koro Ar Dekho Se Keno Spacial Ato 🥰 </button>
+</div>
+
+<div class="step" id="step3">
+  <h2 class="text-4xl font-bold text-pink-600 mb-8">Ei Jinisgulor Jonno 👀</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-white p-4 rounded-xl shadow">
+      <div class="image-box"><img src="eyes.jpeg"></div>
+      <h3 class="font-bold text-pink-500 mt-2">Tar Chokh</h3>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow">
+      <div class="image-box"><img src="smile.jpeg"></div>
+      <h3 class="font-bold text-pink-500 mt-2">Tar Hasi</h3>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow">
+      <div class="image-box"><img src="child.jpeg"></div>
+      <h3 class="font-bold text-pink-500 mt-2">Tar Bacchamo</h3>
+    </div>
+  </div>
+  <button class="btn" onclick="go(4)">Cholo Dekha Jak Tar Sathe Katano Kichu Muhurto 🩶</button>
+</div>
+
+<div class="step" id="step4">
+  <div class="emoji">📸</div>
+  <h2 class="text-4xl font-bold text-pink-600 mb-6">Onek Memories Ache But Egulo Sobtheke Spacial</h2>
+  <div class="image-box">
+    <img id="memory-img" src="memory1.jpeg">
+  </div>
+  <button class="btn" onclick="go(5)">Tahole Final Wish Ta Korei Feli Take Cholo 👀</button>
+</div>
+
+<div class="step" id="step5">
+  <div class="emoji">🎂</div>
+  <h2 class="text-4xl font-bold text-pink-600 mb-6">My Wish For You</h2>
+  <p class="text-lg mb-6">Happy Birthday Sundori ❤️Many Many Happy Returns Of The Day😘 Ajker Dinta Sudhu Noy Ami Chai Sarajibon Tumi Valo Thako And Onekta Anonde Thako😁Tumi Amar Jibone Emon Akjon Manus Jar khusi ,Anondo And Success Ami Proti Muhurte Chai ❤️Ajker Dinta Onek Anondo Koro 😁 I Love You More Than Words Can Express Always And Forever 😘❤️ </p>
+  <button class="btn" onclick="go(6)">One Question…</button>
+</div>
+
+<div class="step" id="step6">
+  <div class="emoji">❤️</div>
+  <h2 class="text-4xl font-bold text-pink-600 mb-6">Will you always be mine?</h2>
+  <div class="flex justify-center gap-6">
+    <button class="btn" onclick="go(7)">YES 💖</button>
+    <button class="btn" onclick="alert('Kosto Paisi 😌')">NO 😜</button>
+  </div>
+</div>
+
+<div class="step" id="step7">
+  <h2 class="text-4xl font-bold text-pink-600 mb-6">A Letter For You 💌</h2>
+  <div class="bg-white/70 p-6 rounded-xl max-h-64 overflow-y-auto text-left">
+    <p>
+      From the moment you entered my life, everything changed.Jibone Protita Podokhepe Cholar Songi Tumi Amar🩶Tomar Songe Katano Protiti Din Protiti Muhurto Jeno Eivabei Anondo Ar Valobasay Purno Hoye Othe😊Tomar Pase Theke Ami Protidin Tomar Jiboner Protiti Choto Boro Muhurter Songi Hote Chai ❤️ Tomar Hasite Ami Anondito ,Tomar koste Ami Sobsomoy Tomar pase Achi Ar Tomar Success e Ami Gorbito. Ami SobSomoy Tomar Pase Achi Jeivabe Tumi Amar Pase Thekecho 🥰
+      I promise to love you endlessly ❤️
+    </p>
+  </div>
+  <button class="btn" onclick="go(8)">Ebar Bolo I Love You ar Ekhane Click Koro💖</button>
+</div>
+
+<div class="step" id="step8">
+  <h1 class="text-4xl font-bold text-pink-600 mb-4">I Love You So Much🫂❤️</h1>
+  <button class="btn" onclick="celebrate()">Click And Celebrate💍</button>
+</div>
+
+</div>
+
+<script>
+let current=0;
+const CORRECT_ANSWER="sundorir";
+
+const music=document.getElementById("bg-music");
+music.play().catch(()=>{});
+
+function go(n){
+  document.getElementById("step"+current).classList.remove("active");
+  if(current===4) stopMemory();
+  document.getElementById("step"+n).classList.add("active");
+  current=n;
+  if(n===4) startMemory();
+}
+
+function checkAnswer(){
+  const v=document.getElementById("answerInput").value.toLowerCase();
+  if(v===CORRECT_ANSWER) go(1);
+  else document.getElementById("errorMsg").classList.remove("hidden");
+}
+
+function startExperience(){
+  music.play();
+  go(2);
+}
+
+/* MEMORY SLIDESHOW — ONLY ANIMATION LOGIC */
+const memories=["memory1.jpeg","memory2.jpeg","memory3.jpeg"];
+let memIndex=0;
+let memTimer=null;
+const memoryImg=document.getElementById("memory-img");
+
+memories.forEach(s=>{const i=new Image();i.src=s;});
+
+function startMemory(){
+  memIndex=0;
+  memoryImg.src=memories[memIndex];
+  memTimer=setInterval(()=>{
+    memIndex=(memIndex+1)%memories.length;
+    swap(memories[memIndex]);
+  },3000);
+}
+
+function swap(src){
+  memoryImg.classList.add("exit");
+  const img=new Image();
+  img.src=src;
+  img.onload=()=>{
+    setTimeout(()=>{
+      memoryImg.src=src;
+      memoryImg.classList.remove("exit");
+      memoryImg.classList.add("enter");
+    },400);
+  };
+}
+
+function stopMemory(){
+  clearInterval(memTimer);
+}
+
+function celebrate(){
+  confetti({particleCount:400,spread:160});
+}
+</script>
+
+</body>
+</html>
