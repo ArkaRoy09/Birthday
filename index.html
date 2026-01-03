@@ -12,7 +12,7 @@
 body{
   margin:0;
   height:100vh;
-  overflow:hidden;
+  overflow-y:auto; /* ✅ SCROLL ENABLED */
   font-family:'Inter',sans-serif;
   background:linear-gradient(135deg,#f9a8d4,#f3e8ff);
 }
@@ -63,7 +63,6 @@ body{
   to{transform:translateY(-120vh)}
 }
 
-/* IMAGE BOX */
 .image-box{
   width:100%;
   max-width:420px;
@@ -74,16 +73,13 @@ body{
   background:#fde2e8;
 }
 
-/* ONLY MEMORY ANIMATION ADDED */
 .image-box img{
   width:100%;
   height:100%;
   object-fit:contain;
   opacity:1;
   transform:translateX(0);
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transition:opacity .8s ease, transform .8s ease;
 }
 .image-box img.enter{
   opacity:1;
@@ -125,8 +121,10 @@ body{
 <div class="step" id="step2">
   <div class="emoji">🎉</div>
   <h2 class="text-4xl font-bold text-pink-600 mb-6">Happy Birthday!</h2>
-  <p class="text-lg mb-6">Ajke emon akta din jei dine akta cute baccha pagol ei prithibite ase.Sobai koto khusi ar koto anondito hoy.Fel Fel kore sei baccha meyeta sobar dike takiye thake,hase abar majhe majhe kade😊.Bacchata khub gulumulu dekhlei chotkate iccha korbe.Tarpor dhire dhire ei baccha pagolta boro hoy tobe tar bacchamo kome na kintu.Eivavei dekhte dekhte se Amar jibone podarpon kore.18 bochore se pa day tobuo tar moddhe sei chotobelar vab ta royei jay.Ei baccha meyetar kichu kichu jinis amake aro valobaste baddho kore sei meyetake.❤️ </p>
-  <button class="btn" onclick="go(3)">Ekhane Click Koro Ar Dekho Se Keno Spacial Ato 🥰 </button>
+  <p class="text-lg mb-6">
+    Ajke emon akta din jei dine akta cute baccha pagol ei prithibite ase.Sobai koto khusi ar koto anondito hoy.Fel Fel kore sei baccha meyeta sobar dike takiye thake,hase abar majhe majhe kade😊.Bacchata khub gulumulu dekhlei chotkate iccha korbe.Tarpor dhire dhire ei baccha pagolta boro hoy tobe tar bacchamo kome na kintu.Eivavei dekhte dekhte se Amar jibone podarpon kore.18 bochore se pa day tobuo tar moddhe sei chotobelar vab ta royei jay.Ei baccha meyetar kichu kichu jinis amake aro valobaste baddho kore sei meyetake.❤️ 
+  </p>
+  <button class="btn" onclick="go(3)">Ekhane Click Koro Ar Dekho Se Keno Spacial Ato 🥰</button>
 </div>
 
 <div class="step" id="step3">
@@ -160,7 +158,7 @@ body{
 <div class="step" id="step5">
   <div class="emoji">🎂</div>
   <h2 class="text-4xl font-bold text-pink-600 mb-6">My Wish For You</h2>
-  <p class="text-lg mb-6">Happy Birthday Sundori ❤️Many Many Happy Returns Of The Day😘 Ajker Dinta Sudhu Noy Ami Chai Sarajibon Tumi Valo Thako And Onekta Anonde Thako😁Tumi Amar Jibone Emon Akjon Manus Jar khusi ,Anondo And Success Ami Proti Muhurte Chai ❤️Ajker Dinta Onek Anondo Koro 😁 I Love You More Than Words Can Express Always And Forever 😘❤️ </p>
+  <p class="text-lg mb-6">Happy Birthday Sundori ❤️Many Many Happy Returns Of The Day😘 Ajker Dinta Sudhu Noy Ami Chai Sarajibon Tumi Valo Thako And Onekta Anonde Thako😁Tumi Amar Jibone Emon Akjon Manus Jar khusi ,Anondo And Success Ami Proti Muhurte Chai ❤️Ajker Dinta Onek Anondo Koro 😁 I Love You More Than Words Can Express Always And Forever 😘❤️</p>
   <button class="btn" onclick="go(6)">One Question…</button>
 </div>
 
@@ -176,12 +174,9 @@ body{
 <div class="step" id="step7">
   <h2 class="text-4xl font-bold text-pink-600 mb-6">A Letter For You 💌</h2>
   <div class="bg-white/70 p-6 rounded-xl max-h-64 overflow-y-auto text-left">
-    <p>
-      From the moment you entered my life, everything changed.Jibone Protita Podokhepe Cholar Songi Tumi Amar🩶Tomar Songe Katano Protiti Din Protiti Muhurto Jeno Eivabei Anondo Ar Valobasay Purno Hoye Othe😊Tomar Pase Theke Ami Protidin Tomar Jiboner Protiti Choto Boro Muhurter Songi Hote Chai ❤️ Tomar Hasite Ami Anondito ,Tomar koste Ami Sobsomoy Tomar pase Achi Ar Tomar Success e Ami Gorbito. Ami SobSomoy Tomar Pase Achi Jeivabe Tumi Amar Pase Thekecho 🥰
-      I promise to love you endlessly ❤️
-    </p>
+    <p> From the moment you entered my life, everything changed.Jibone Protita Podokhepe Cholar Songi Tumi Amar🩶Tomar Songe Katano Protiti Din Protiti Muhurto Jeno Eivabei Anondo Ar Valobasay Purno Hoye Othe😊Tomar Pase Theke Ami Protidin Tomar Jiboner Protiti Choto Boro Muhurter Songi Hote Chai ❤️ Tomar Hasite Ami Anondito ,Tomar koste Ami Sobsomoy Tomar pase Achi Ar Tomar Success e Ami Gorbito. Ami SobSomoy Tomar Pase Achi Jeivabe Tumi Amar Pase Thekecho 🥰I promise to love you endlessly ❤️</p>
   </div>
-  <button class="btn" onclick="go(8)">Ebar Bolo I Love You ar Ekhane Click Koro💖</button>
+  <button class="btn" onclick="go(8)">Ebar Bolo I Love You Ar Click Koro💖</button>
 </div>
 
 <div class="step" id="step8">
@@ -194,7 +189,6 @@ body{
 <script>
 let current=0;
 const CORRECT_ANSWER="sundorir";
-
 const music=document.getElementById("bg-music");
 music.play().catch(()=>{});
 
@@ -217,13 +211,10 @@ function startExperience(){
   go(2);
 }
 
-/* MEMORY SLIDESHOW — ONLY ANIMATION LOGIC */
 const memories=["memory1.jpeg","memory2.jpeg","memory3.jpeg"];
 let memIndex=0;
 let memTimer=null;
 const memoryImg=document.getElementById("memory-img");
-
-memories.forEach(s=>{const i=new Image();i.src=s;});
 
 function startMemory(){
   memIndex=0;
